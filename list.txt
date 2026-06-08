@@ -1,0 +1,14 @@
+! --- BLOQUEAR YOUTUBE SHORTS ---
+! Bloquea el acceso directo a la URL de Shorts en PC y móvil
+||youtube.com/shorts/*$nav
+||m.youtube.com/shorts/*$nav
+
+! Oculta el botón/pestaña de Shorts en el menú lateral y la barra de navegación
+! youtube.com##+js(json-prune, sidebar.items.1.guideSectionRenderer.items.1.guideEntryRenderer.navigationEndpoint.browseEndpoint.browseId)
+! youtube.com##ytd-guide-entry-renderer:has(a[href="/shorts/"])
+! youtube.com##ytd-mini-guide-entry-renderer:has(a[href="/shorts/"])
+
+! Oculta las secciones de Shorts en la página de inicio y en las búsquedas
+! youtube.com##ytd-rich-shelf-renderer[is-shorts]
+! youtube.com##ytd-reel-shelf-renderer
+! youtube.com##ytd-video-renderer:has(a[href^="/shorts/"])

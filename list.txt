@@ -1,14 +1,46 @@
-! --- BLOQUEAR YOUTUBE SHORTS ---
-! Bloquea el acceso directo a la URL de Shorts en PC y móvil
+! =================================================================
+! BLOQUEADOR DE CONTENIDO CORTO (YOUTUBE, INSTAGRAM, FACEBOOK)
+! =================================================================
+
+! --- 1. YOUTUBE SHORTS (Bloqueo y Limpieza) ---
 ||youtube.com/shorts/*$nav
 ||m.youtube.com/shorts/*$nav
+youtube.com##+js(json-prune, sidebar.items.1.guideSectionRenderer.items.1.guideEntryRenderer.navigationEndpoint.browseEndpoint.browseId)
+youtube.com##ytd-guide-entry-renderer:has(a[href="/shorts/"])
+youtube.com##ytd-mini-guide-entry-renderer:has(a[href="/shorts/"])
+youtube.com##ytd-rich-shelf-renderer[is-shorts]
+youtube.com##ytd-reel-shelf-renderer
+youtube.com##ytd-video-renderer:has(a[href^="/shorts/"])
+youtube.com##[page-subtype="subscriptions"] ytd-grid-video-renderer:has(a[href^="/shorts/"])
 
-! Oculta el botón/pestaña de Shorts en el menú lateral y la barra de navegación
-! youtube.com##+js(json-prune, sidebar.items.1.guideSectionRenderer.items.1.guideEntryRenderer.navigationEndpoint.browseEndpoint.browseId)
-! youtube.com##ytd-guide-entry-renderer:has(a[href="/shorts/"])
-! youtube.com##ytd-mini-guide-entry-renderer:has(a[href="/shorts/"])
+! --- 2. INSTAGRAM REELS ---
+! Bloquea el acceso a la pestaña/URL de Reels
+||instagram.com/reels/*$nav
+||instagram.com/reel/*$nav
+! Oculta el botón de Reels en el menú lateral izquierdo
+instagram.com##a[href="/reels/"]
+! Oculta las secciones de Reels que aparecen en el feed principal
+instagram.com##article:has(a[href^="/reel/"])
+instagram.com##div[role="main"] div:has(> a[href^="/reels/"])
 
-! Oculta las secciones de Shorts en la página de inicio y en las búsquedas
-! youtube.com##ytd-rich-shelf-renderer[is-shorts]
-! youtube.com##ytd-reel-shelf-renderer
-! youtube.com##ytd-video-renderer:has(a[href^="/shorts/"])
+! --- 3. FACEBOOK REELS ---
+! Bloquea el acceso a las URLs de Reels
+||facebook.com/reels/*$nav
+||facebook.com/reel/*$nav
+! Oculta la pestaña de Reels en el menú y el feed principal
+facebook.com##div[data-pagelet="MainFeed"] div:has(a[href^="/reel/"])
+facebook.com##div:has(> h3 span:has-text(Reels))
+facebook.com##a[href^="/reels/"]
+facebook.com##div[aria-label="Reels"]
+
+! --- 4. TIKTOK (Bloqueo Total) ---
+! Bloquea el acceso a la web principal de TikTok y sus subdominios
+||tiktok.com^$nav
+||www.tiktok.com^$nav
+||m.tiktok.com^$nav
+
+! Bloquea las URLs específicas de videos y directos (por si entras desde enlaces externos)
+||tiktok.com/*$nav
+
+! Oculta cualquier elemento incrustado de TikTok en otras páginas web
+web.tiktok.com##iframe

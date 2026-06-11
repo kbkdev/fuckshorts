@@ -1,5 +1,6 @@
-! --- FILTROS PARA ELIMINAR YOUTUBE SHORTS ---
+! --- FILTROS PARA ELIMINAR YOUTUBE SHORTS (PC Y MÓVIL) ---
 
+! === VERSIÓN PC ===
 ! Oculta el botón de Shorts en el menú lateral principal
 youtube.com##ytd-guide-entry-renderer:has(a[href="/shorts/"])
 
@@ -18,7 +19,16 @@ youtube.com##ytd-video-renderer:has(a[href^="/shorts/"])
 ! Elimina Shorts que aparezcan en tu pestaña de "Suscripciones"
 youtube.com##ytd-grid-video-renderer:has(a[href^="/shorts/"])
 
-! Oculta todo el reproductor de Shorts si entras desde un enlace directo (PC y Móvil)
-youtube.com##ytd-browse[page-subtype="shorts"]
-youtube.com##ytd-shorts
-m.youtube.com##ytm-shorts-lockup-view-model-v2
+
+! === VERSIÓN MÓVIL (m.youtube.com) ===
+! Oculta el botón de Shorts de la barra de navegación inferior
+m.youtube.com##ytm-pivot-bar-item-renderer:has(a[href="/shorts"])
+
+! Elimina los carruseles de Shorts en la página de inicio móvil
+m.youtube.com##ytm-reel-shelf-renderer
+
+! Elimina videos individuales de Shorts en los resultados de búsqueda móvil
+m.youtube.com##ytm-video-with-context-renderer:has(a[href^="/shorts/"])
+
+! Elimina Shorts de la pestaña de Suscripciones en el móvil
+m.youtube.com##ytm-item-section-renderer:has(a[href^="/shorts/"])

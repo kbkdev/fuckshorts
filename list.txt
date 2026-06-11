@@ -40,3 +40,18 @@ m.youtube.com##ytm-item-section-renderer:has(a[href^="/shorts/"])
 ! Rompe el reproductor móvil si entras por enlace directo
 m.youtube.com##ytm-shorts-lockup-view-model-v2
 m.youtube.com##ytm-shorts-lockup-view-model-v3
+
+! === PARCHE ESPECIAL PARA YOUTUBE MÓVIL EN IOS (IPHONE) ===
+
+! Bloquea el botón de Shorts en la barra inferior por su posición fija
+m.youtube.com##ytm-pivot-bar-item-renderer:nth-child(2)
+m.youtube.com##a[href="/shorts"]
+
+! Elimina los carruseles de Shorts de la pantalla de inicio
+m.youtube.com##ytm-reel-shelf-renderer
+m.youtube.com##.shorts-shelf
+
+! Oculta el reproductor si abres un link directo en iPhone
+m.youtube.com##ytm-shorts-lockup-view-model-v2
+m.youtube.com##ytm-shorts-lockup-view-model-v3
+m.youtube.com##.ytm-shorts-context-provider
